@@ -39,6 +39,10 @@ Goals:
 Make it more customizable,
 and less dependant on users changing content in the file.
 
+debug/release (ftp commands, build)
+
+add generation of the ftp_commands to the program as an option.
+
 support for linux.
 support for osx?
 

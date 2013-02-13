@@ -1,0 +1,4 @@
+open 10.34.99.2:21
+send 2013/Debug/2013.out /usr/deep/in/fs/FRCUserProgram.out
+disconnect
+quit
