@@ -5,6 +5,16 @@
 
 #include <iostream>
 
+#ifdef Q_WS_X11
+#include <unistd.h>
+#elif Q_WS_WIN
+#include <fcntl.h>
+#elif Q_WS_MACX
+#error Cannot compile for osx :(
+#endif
+
+#define PROJECT_DIR "/home/ethan/Development/2013"
+// Need to get this size and replace where there are 28/29
 
 void writeover(FILE *f, FILE *fdo);
 
@@ -15,21 +25,21 @@ int main(int argc, char *argv[])
     QStringList list;
     QStringList dirlist;
 
-    dirlist << "C:/WindRiver/workspace/2013";
+    dirlist << PROJECT_DIR;
 
-    QStringList dlist = QDir("C:/WindRiver/workspace/2013", "*.cpp").entryList(); // Get all source files in the project folder
+    QStringList dlist = QDir(PROJECT_DIR, "*.cpp").entryList(); // Get all source files in the project folder
     while(!dlist.empty()){
-        QString file = QString("%1/%2").arg("C:/WindRiver/workspace/2013").arg(dlist.takeLast()); // need to add on the first part of file directory name
-        file = file.right(file.length()-28);
+        QString file = QString("%1/%2").arg(PROJECT_DIR).arg(dlist.takeLast()); // need to add on the first part of file directory name
+        file = file.right(file.length()-29);
         file.chop(4);
         list += file; // remove constant filename prefix, and suffix
     }
 
-    QDirIterator directories("C:/WindRiver/workspace/2013", QDir::Dirs | QDir::NoSymLinks | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
+    QDirIterator directories(PROJECT_DIR, QDir::Dirs | QDir::NoSymLinks | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
 
     while(directories.hasNext()){
         directories.next();
-        if(!directories.filePath().startsWith("C:/WindRiver/workspace/2013/PPC603gnu", Qt::CaseInsensitive)){
+        if(!directories.filePath().startsWith(PROJECT_DIR"/PPC603gnu", Qt::CaseInsensitive)){
             QString path = directories.filePath();
 
             QDir projectDir( path, "*.cpp");
@@ -37,7 +47,7 @@ int main(int argc, char *argv[])
 
             while(!nlist.empty()){
                 QString file = QString("%1/%2").arg(path).arg(nlist.takeLast()); // need to add on the first part of file directory name
-                file = file.right(file.length()-28); // remove constant filename prefix
+                file = file.right(file.length()-29); // remove constant filename prefix
                 file.chop(4); // remove suffix
                 list += file;
             }

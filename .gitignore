@@ -16,3 +16,5 @@
 # Build Folder(s)
 build/
 
+# This is machine-independant, so you need to make a new one for your machine every time you clone the source.
+MakeGen.pro.user
