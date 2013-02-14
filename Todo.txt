@@ -2,3 +2,42 @@ TODO list
 
 optimize the copying if its to stay.
 also if it stays, try to fix why the ÿ is showing up.
+
+add support for arguments with "" after the =
+
+If nessasary elements in the configuration are left out, make a fatal error, explaining error.
+
+Add support for relative paths for projectDir etc.
+
+Add support for other compilers. (and not direct windriver)
+
+Add -? -h --help
+
+add -v --version
+
+add -V --verbose -V# --verbose=#
+
+add --exclude-build-dir
+
+add --dump-at-end --dump-after-start etc.
+
+check each file for A: valididty, B: excess definitions. also:
+add --validity-test=/path/file
+
+Stop using temporary lits
+
+Settings:22   Add support for multiple config files.
+add support for relative paths here!
+
+The reason why the project name is nessasary is beacuse it is frequented throughout the makefile.
+
+Does there really have to be case sensitivity on linux? or not on all others? or am I just finding an extra use for the OS stuff
+
+And does there really need to be os.h or can it all just use the qt stuff?
+
+Change the 'projects-dir' mess
+
+Arguments:
+ --config=/path/file
+     open /path/file as the config file instead of ./MakeGen.ini
+ --

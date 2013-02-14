@@ -5,13 +5,9 @@
 
 #include <iostream>
 
-#ifdef Q_WS_X11
-#include <unistd.h>
-#elif Q_WS_WIN
-#include <fcntl.h>
-#elif Q_WS_MACX
-#error Cannot compile for osx :(
-#endif
+#include "settings.h"
+
+#include "os.h"
 
 #define PROJECT_DIR "/home/ethan/Development/2013"
 // Need to get this size and replace where there are 28/29
@@ -21,6 +17,16 @@ void writeover(FILE *f, FILE *fdo);
 
 int main(int argc, char *argv[])
 {
+    QCoreApplication a(argc, argv);
+    QString runPath = qApp->applicationDirPath();
+
+    Settings settings(OS, runPath, argc, argv);
+
+//    printf("File call/Arguments: %s", argv[0]);
+//    for(int i = 1; i < argc; i++){
+//        printf(" %s", argv[i]);
+//    }
+//    printf("\n");
 
     QStringList list;
     QStringList dirlist;
@@ -129,6 +135,6 @@ void writeover(FILE *f, FILE *fdo){
         if(c != 'ÿ')
             fputc(c, f);
         else
-            qDebug() << "Found invalid character \'ÿ\'\n";
+            qDebug() << "Found invalid character \'ÿ\'\n"; // '\255' is the character.
     }
 }

@@ -8,7 +8,12 @@ CONFIG   += console
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    settings.cpp
 
 OTHER_FILES += \
     Todo.txt
+
+HEADERS += \
+    settings.h \
+    os.h
