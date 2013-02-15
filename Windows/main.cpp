@@ -63,6 +63,10 @@ int main(int argc, char *argv[])
 
     if(f == NULL || fdp1 == NULL || fdp2 == NULL || fdp3 == NULL){
         std::cout << "opening failed :(\n";
+        std::cout << "f:" << f << '\n';
+        std::cout << "fdp1:" << fdp1 << '\n';
+        std::cout << "fdp1:" << fdp2 << '\n';
+        std::cout << "fdp2:" << fdp3 << '\n';
         exit(-3);
     }
 

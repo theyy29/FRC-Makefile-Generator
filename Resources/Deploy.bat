@@ -1,0 +1,1 @@
+ftp -n -A -s:ftp_commands.txt
