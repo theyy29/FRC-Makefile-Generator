@@ -137,12 +137,26 @@ Settings::Settings(QString os, QString cd, int argc, char *argv[])
 
     //// Projects Directory (begin) ////
     // Note: OS specific.
-    QString projectsDir = cd;
+    QString projectsDir = cd; // need to go up 2 (../..)
+
+//    settings.beginGroup("TAG1");
+//    const QStringList childKeys = settings.childKeys();
+//    QStringList values;
+//    foreach (const QString &childKey, childKeys)
+//        values << settings.value(childKey).toString();
+//    settings.endGroup();
+
+    // get the os-specific keys
+    configFile->beginGroup(OS);
+    QStringList osKeys = configFile->childKeys();
 
     // Check for a value from the config file.
-    if(keys.contains(OS"/projectsDir", ( OS == OS_LINUX ? Qt::CaseSensitive : Qt::CaseInsensitive ))){
-        projectsDir = configFile->value(OS"/projectsDir").toString();
+    if(osKeys.contains("projectsDir", ( OS == OS_LINUX ? Qt::CaseSensitive : Qt::CaseInsensitive ))){
+        projectsDir = configFile->value("projectsDir").toString();
     }
+
+    // End reading from os element
+    configFile->endGroup();
 
     // Now check to see if an argument for it was passed in
 
@@ -163,7 +177,7 @@ Settings::Settings(QString os, QString cd, int argc, char *argv[])
 
     //// Projects Directory (end) ////
 
-    dump();
+    // dump();
 }
 
 bool Settings::requirementsFuffilled(){
@@ -201,3 +215,22 @@ void Settings::dump(){
 //    configFile->dumpObjectTree();
 //    configFile->dumpObjectInfo();
 }
+
+
+QString Settings::getValue(QString key){
+    return settings.value(key);
+}
+
+QString Settings::getProjectDir(){
+    return getValue(QString("projectsDir"));
+}
+
+QString Settings::getProjectName(){
+    return getValue(QString("projectName"));
+}
+
+QString Settings::getBuildDir(){
+    return getValue(QString("buildDir"));
+}
+
+

@@ -19,11 +19,16 @@ public:
 
     QStringList getArgumentList();
 
+    QString getProjectDir();
+    QString getProjectName();
+    QString getBuildDir();
+
     void dump();
 private:
     bool requirementsFuffilled();
     bool reportRequirements();
 
+    QString getValue(QString key);
 private:
     QSettings *configFile;
     QStringList arguments;

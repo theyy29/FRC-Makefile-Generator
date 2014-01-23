@@ -8,7 +8,7 @@ Windows:
         WindRiver
         -- or --
         A compiled set of the gcc toolset (and binutils, both configured to cross-compile to vx-works) AND the vx-works includes and libraries.
-    Copy the executable, and the nessasary library files (unless they are added you your path)
+    Copy the executable (MakeGen), and the nessasary library files (unless they are added you your path)
         along with the resource files to your project compilation folder (ie. C:/WindRiver/workspace/2013-FRC-Robot/PPC603gnu/)
     run compile.bat
 Linux:
@@ -16,28 +16,24 @@ Linux:
         Using WindRiver under wine, using the windows versions of these tools (messy, but do-able)
         -- or --
         A compiled set of the gcc toolset (and binutils, both configured to cross-compile to vx-works) AND the vx-works includes and libraries.
-    Copy the executable, and the nessasary library files (unless they are added you your path)
+    Copy the executable (MakeGen), and the nessasary library files (unless they are added you your path)
         along with the resource files to your project compilation folder (ie. /home/username/Development/2013-FRC-Robot/PPC603gnu)
     run compile.sh
     
-    
-Files it depends on:
-mkp1 : first part of the makefile, before any generated content.
-mkp2 : middle section of the makefile, in between generated content.
-mkp3 : last part of the makefile, after all generated content.
-Found in the Resources directory
 
-
-Nessasary library files:
+Nessasary library files (unneeded if they are in your path):
 Windows:
   mingwm10.dll
   QtCored4.dll
   libgcc_s_dw2-1.dll
 Linux:
+  All libraries should be in the path, unless you are using a non-graphical linux distro.
+  Then it would probably be the .so equivilents.
+OSX:
+  Not supported yet. Do not know.
 
 Goals:
-Make it more customizable,
-and less dependant on users changing content in the file.
+Make it more customizable (even more),
 
 debug/release (ftp commands, build)
 

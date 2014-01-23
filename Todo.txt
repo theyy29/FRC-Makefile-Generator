@@ -1,15 +1,12 @@
 TODO list
 
-optimize the copying if its to stay.
-also if it stays, try to fix why the ÿ is showing up.
-
 add support for arguments with "" after the =
 
 If nessasary elements in the configuration are left out, make a fatal error, explaining error.
 
 Add support for relative paths for projectDir etc.
 
-Add support for other compilers. (and not direct windriver)
+Add support for other compilers? (and not the tools from windriver)
 
 Add -? -h --help
 
@@ -21,12 +18,12 @@ add --exclude-build-dir
 
 add --dump-at-end --dump-after-start etc.
 
-check each file for A: valididty, B: excess definitions. also:
+check each (config) file for A: valididty, B: excess definitions. also:
 add --validity-test=/path/file
 
-Stop using temporary lits
+Stop using temporary lists
 
-Settings:22   Add support for multiple config files.
+settings.cpp:22   Add support for multiple config files.
 add support for relative paths here!
 
 The reason why the project name is nessasary is beacuse it is frequented throughout the makefile.

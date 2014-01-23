@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     settings.cpp
 
 OTHER_FILES += \
-    Todo.txt
+    Todo.txt \
+    README.md
 
 HEADERS += \
     settings.h \
