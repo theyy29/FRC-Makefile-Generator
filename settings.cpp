@@ -6,8 +6,11 @@ Settings::Settings(QString os, QString cd, int argc, char *argv[])
         arguments << argv[i];
     }
 
-    std::cout << "Arguments:";
-    qDebug() << arguments;
+
+    if(arguments.length() > 0){
+        std::cout << "Arguments:";
+        qDebug() << arguments;
+    }
 
     //// Config File Name (begin) ////
     QStringList tlist = arguments; // I really need to stop using the temporary lists.
